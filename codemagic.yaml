@@ -62,8 +62,6 @@ workflows:
   ios-build-adhoc:
     name: Bake Ratio Ad Hoc (device install)
     max_build_duration: 60
-    integrations:
-      app_store_connect: bakeratio
     environment:
       xcode: latest
       ios_signing:
