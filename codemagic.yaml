@@ -22,7 +22,7 @@ workflows:
     name: Bake Ratio iOS Build (App Store)
     max_build_duration: 60
     integrations:
-      app_store_connect: bakeratio
+      app_store_connect: codemagic-bake
     environment:
       xcode: latest
       # 点名使用 Codemagic 里已上传的证书 + 描述文件（不走自动匹配，
