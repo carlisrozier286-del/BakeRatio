@@ -24,8 +24,6 @@ enum BakeStrings {
     static let flourWeight = "Flour"
     static let doughWeight = "Total dough"
     static let hydration = "Hydration"
-    static let salt = "Salt"
-    static let starter = "Starter"
     static let loaves = "Loaves"
     static let grams = "g"
 

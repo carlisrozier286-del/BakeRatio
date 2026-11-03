@@ -35,7 +35,7 @@ final class BakeStore: ObservableObject {
     }
 
     func deleteRecipes(at offsets: IndexSet) {
-        recipes.remove(atOffsets: offsets)
+        remove(from: &recipes, offsets: offsets)
         persist()
     }
 
@@ -47,8 +47,15 @@ final class BakeStore: ObservableObject {
     }
 
     func deleteBakes(at offsets: IndexSet) {
-        bakes.remove(atOffsets: offsets)
+        remove(from: &bakes, offsets: offsets)
         persist()
+    }
+
+    /// 从数组里删掉给定下标（不依赖 SwiftUI 的 remove(atOffsets:)）
+    private func remove<T>(from array: inout [T], offsets: IndexSet) {
+        for index in offsets.sorted(by: >) where array.indices.contains(index) {
+            array.remove(at: index)
+        }
     }
 
     // MARK: 持久化
