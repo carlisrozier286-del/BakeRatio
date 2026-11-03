@@ -40,6 +40,14 @@ enum BakeNumbers {
         let total = max(0, Int(seconds))
         return String(format: "%02d:%02d:%02d", total / 3600, (total % 3600) / 60, total % 60)
     }
+
+    /// 时间点 -> "14:05"
+    static func clockTime(_ date: Date) -> String {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "en_GB")
+        f.dateFormat = "HH:mm"
+        return f.string(from: date)
+    }
 }
 
 /// 日期格式

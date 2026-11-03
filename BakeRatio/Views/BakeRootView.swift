@@ -1,51 +1,52 @@
 import SwiftUI
 
+/// 底部四个页签
+enum BakeTab: Hashable {
+    case dough, recipes, schedule, bakes
+}
+
 struct BakeRootView: View {
     @EnvironmentObject private var state: BakeAppState
     @State private var mix = BakeMix()
-    @State private var showRecipes = false
-    @State private var showTiming = false
+    @State private var tab: BakeTab = .dough
     @State private var showAbout = false
 
     var body: some View {
-        NavigationStack {
-            BakeCalculatorView(mix: $mix,
-                               onOpenRecipes: { showRecipes = true },
-                               onOpenTiming: { showTiming = true })
-            .navigationTitle(BakeStrings.appName)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Button {
-                            showRecipes = true
-                        } label: {
-                            Label(BakeStrings.recipes, systemImage: "book")
-                        }
-                        Button {
-                            showTiming = true
-                        } label: {
-                            Label(BakeStrings.timing, systemImage: "clock")
-                        }
-                        Divider()
-                        Button {
-                            showAbout = true
-                        } label: {
-                            Label(BakeStrings.about, systemImage: "info.circle")
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
-                    }
-                }
+        TabView(selection: $tab) {
+            NavigationStack {
+                BakeCalculatorView(mix: $mix, onOpenAbout: { showAbout = true })
             }
-            .sheet(isPresented: $showRecipes) {
-                BakeRecipeSheet(mix: $mix)
+            .tabItem {
+                Label(BakeStrings.tabDough, systemImage: "scalemass")
             }
-            .sheet(isPresented: $showTiming) {
-                BakeTimingSheet(starterPct: mix.starterPct)
+            .tag(BakeTab.dough)
+
+            NavigationStack {
+                BakeRecipeListView(mix: $mix, onUse: { tab = .dough })
             }
-            .sheet(isPresented: $showAbout) {
-                BakeAboutView()
+            .tabItem {
+                Label(BakeStrings.tabRecipes, systemImage: "book.closed")
             }
+            .tag(BakeTab.recipes)
+
+            NavigationStack {
+                BakeScheduleView(mix: $mix)
+            }
+            .tabItem {
+                Label(BakeStrings.tabSchedule, systemImage: "clock.badge.checkmark")
+            }
+            .tag(BakeTab.schedule)
+
+            NavigationStack {
+                BakeBakesView()
+            }
+            .tabItem {
+                Label(BakeStrings.tabBakes, systemImage: "chart.bar.doc.horizontal")
+            }
+            .tag(BakeTab.bakes)
+        }
+        .sheet(isPresented: $showAbout) {
+            BakeAboutView()
         }
     }
 }

@@ -3,21 +3,23 @@ import SwiftUI
 struct BakeCalculatorView: View {
     @EnvironmentObject private var state: BakeAppState
     @Binding var mix: BakeMix
-    var onOpenRecipes: () -> Void
-    var onOpenTiming: () -> Void
+    var onOpenAbout: () -> Void
 
     @State private var showSaveDialog = false
     @State private var recipeName = ""
     @State private var showLogged = false
+    @State private var showWaterTemp = false
 
     private var formula: BakeFormula { mix.formula }
 
     var body: some View {
         ScrollView {
             VStack(spacing: 14) {
+                presetRow
                 modeCard
                 sizeCard
                 ratioCard
+                waterCard
                 ingredientCard
                 BakeResultCard(formula: formula, loaves: mix.loaves)
                 actionRow
@@ -31,6 +33,15 @@ struct BakeCalculatorView: View {
             .padding(.bottom, 28)
         }
         .background(BakePalette.cream.opacity(0.35))
+        .navigationTitle(BakeStrings.tabDough)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: onOpenAbout) {
+                    Image(systemName: "info.circle")
+                }
+                .accessibilityLabel(BakeStrings.about)
+            }
+        }
         .alert(BakeStrings.recipeName, isPresented: $showSaveDialog) {
             TextField(BakeStrings.recipeName, text: $recipeName)
             Button(BakeStrings.saveRecipe) {
@@ -43,17 +54,63 @@ struct BakeCalculatorView: View {
         }
     }
 
-    private var modeCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Picker("", selection: $mix.mode) {
-                ForEach(BakeInputMode.allCases) { m in
-                    Text(m.title).tag(m)
+    // MARK: 风格预设
+
+    private var presetRow: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(BakeStrings.sectionPresets)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(BakePreset.all) { preset in
+                        Button {
+                            mix.hydration = preset.hydration
+                            mix.saltPct = preset.saltPct
+                            mix.starterPct = preset.starterPct
+                        } label: {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(preset.name)
+                                    .font(.subheadline.weight(.semibold))
+                                Text(preset.note)
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(isActive(preset) ? BakePalette.flour.opacity(0.55) : BakePalette.card)
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
+                .padding(.vertical, 2)
             }
-            .pickerStyle(.segmented)
         }
         .padding(.top, 8)
     }
+
+    private func isActive(_ preset: BakePreset) -> Bool {
+        abs(mix.hydration - preset.hydration) < 0.005
+            && abs(mix.saltPct - preset.saltPct) < 0.0005
+            && abs(mix.starterPct - preset.starterPct) < 0.005
+    }
+
+    // MARK: 模式
+
+    private var modeCard: some View {
+        Picker("", selection: $mix.mode) {
+            ForEach(BakeInputMode.allCases) { mode in
+                Text(mode.title).tag(mode)
+            }
+        }
+        .pickerStyle(.segmented)
+    }
+
+    // MARK: 份量
 
     private var sizeCard: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -72,6 +129,8 @@ struct BakeCalculatorView: View {
         .padding(16)
         .background(RoundedRectangle(cornerRadius: 16).fill(BakePalette.card))
     }
+
+    // MARK: 比例
 
     private var ratioCard: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -92,6 +151,68 @@ struct BakeCalculatorView: View {
         .padding(16)
         .background(RoundedRectangle(cornerRadius: 16).fill(BakePalette.card))
     }
+
+    // MARK: 水温
+
+    private var waterTemp: Double {
+        BakeTempMath.waterTemperature(desired: Double(state.settings.desiredDoughTemp),
+                                     room: state.settings.roomTemp,
+                                     flour: Double(state.settings.flourTemp),
+                                     starter: state.settings.roomTemp,
+                                     friction: Double(state.settings.friction),
+                                     includesStarter: mix.starterPct > 0.02)
+    }
+
+    private var waterTempText: String {
+        String(format: "%.0f ℃", waterTemp)
+    }
+
+    private var waterCard: some View {
+        DisclosureGroup(isExpanded: $showWaterTemp) {
+            VStack(spacing: 10) {
+                BakeStepperRow(title: BakeStrings.desiredDoughTemp,
+                               value: $state.settings.desiredDoughTemp, range: 16...30, suffix: " ℃")
+                BakeStepperRow(title: BakeStrings.flourTemp,
+                               value: $state.settings.flourTemp, range: 10...30, suffix: " ℃")
+                BakeStepperRow(title: BakeStrings.friction,
+                               value: $state.settings.friction, range: 0...8, suffix: " ℃")
+
+                HStack {
+                    Text(BakeStrings.waterNeeded)
+                    Spacer()
+                    Text(waterTempText)
+                        .font(.title3.weight(.bold))
+                        .foregroundStyle(BakePalette.crust)
+                        .monospacedDigit()
+                }
+
+                Text(BakeTempMath.advice(for: waterTemp))
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(.top, 8)
+        } label: {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(BakeStrings.waterTempTitle)
+                        .font(.subheadline.weight(.medium))
+                    Text(BakeStrings.waterTempSubtitle)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Text(waterTempText)
+                    .font(.headline)
+                    .foregroundStyle(BakePalette.crust)
+                    .monospacedDigit()
+            }
+        }
+        .padding(16)
+        .background(RoundedRectangle(cornerRadius: 16).fill(BakePalette.card))
+    }
+
+    // MARK: 配料
 
     private var ingredientCard: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -142,6 +263,8 @@ struct BakeCalculatorView: View {
         .background(RoundedRectangle(cornerRadius: 16).fill(BakePalette.card))
     }
 
+    // MARK: 操作
+
     private var actionRow: some View {
         HStack(spacing: 12) {
             Button {
@@ -152,12 +275,14 @@ struct BakeCalculatorView: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
+            .disabled(mix.mode == .totalDough && mix.totalDoughGrams <= 0)
 
             Button {
                 state.store.log(BakeLogEntry(name: BakeStrings.appName,
                                              totalGrams: formula.totalGrams,
                                              loaves: mix.loaves,
-                                             roomTemp: state.settings.roomTemp))
+                                             roomTemp: state.settings.roomTemp,
+                                             hydration: formula.hydration))
                 showLogged = true
             } label: {
                 Label(BakeStrings.logBake, systemImage: "checkmark.circle")
@@ -166,7 +291,7 @@ struct BakeCalculatorView: View {
             .buttonStyle(.borderedProminent)
             .overlay(alignment: .topTrailing) {
                 if showLogged {
-                    Text("logged")
+                    Text(BakeStrings.logged)
                         .font(.caption2)
                         .foregroundStyle(BakePalette.good)
                         .offset(y: -16)

@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		AA0000000000000000000001 /* BakeRatioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000001 /* BakeRatioApp.swift */; };
-		AA0000000000000000000002 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000002 /* BakeFormula.swift */; };
-		AA0000000000000000000003 /* LoanPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000003 /* BakeIngredient.swift */; };
-		AA0000000000000000000004 /* SimulationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000004 /* BakeRecipe.swift */; };
-		AA0000000000000000000005 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000005 /* BakeStore.swift */; };
-		AA0000000000000000000006 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000006 /* BakeSettings.swift */; };
-		AA0000000000000000000007 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000007 /* BakeStrings.swift */; };
-		AA0000000000000000000008 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000008 /* BakeSettings.swift */; };
-		AA0000000000000000000009 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000009 /* BakeInputRow.swift */; };
-		AA0000000000000000000010 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000010 /* BakeRootView.swift */; };
-		AA0000000000000000000011 /* ScenarioStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000011 /* BakeMix.swift */; };
-		AA0000000000000000000012 /* PlanInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000012 /* BakeCalculatorView.swift */; };
-		AA0000000000000000000013 /* BalanceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000013 /* BakeRecipeSheet.swift */; };
-		AA0000000000000000000014 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000014 /* BakeTimingSheet.swift */; };
-		AA0000000000000000000015 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000015 /* BakeAboutView.swift */; };
-		AA0000000000000000000020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000020 /* Assets.xcassets */; };
-		AA0000000000000000000021 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = KK0000000000000000000001 /* Localizable.strings */; };
+		AA0000000000000000000002 /* BakeFormula.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000002 /* BakeFormula.swift */; };
+		AA0000000000000000000003 /* BakeIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000003 /* BakeIngredient.swift */; };
+		AA0000000000000000000004 /* BakeRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000004 /* BakeRecipe.swift */; };
+		AA0000000000000000000005 /* BakeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000005 /* BakeStore.swift */; };
+		AA0000000000000000000006 /* BakeMix.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000006 /* BakeMix.swift */; };
+		AA0000000000000000000007 /* BakePreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000007 /* BakePreset.swift */; };
+		AA0000000000000000000008 /* BakeRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000008 /* BakeRootView.swift */; };
+		AA0000000000000000000009 /* BakeCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000009 /* BakeCalculatorView.swift */; };
+		AA0000000000000000000010 /* BakeInputRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000010 /* BakeInputRow.swift */; };
+		AA0000000000000000000011 /* BakeAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000011 /* BakeAboutView.swift */; };
+		AA0000000000000000000012 /* BakeRecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000012 /* BakeRecipeListView.swift */; };
+		AA0000000000000000000013 /* BakeScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000013 /* BakeScheduleView.swift */; };
+		AA0000000000000000000014 /* BakeBakesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000014 /* BakeBakesView.swift */; };
+		AA0000000000000000000015 /* BakeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000015 /* BakeSettings.swift */; };
+		AA0000000000000000000016 /* BakeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000016 /* BakeStrings.swift */; };
+		AA0000000000000000000017 /* BakeNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000017 /* BakeNumbers.swift */; };
+		AA0000000000000000000090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000090 /* Assets.xcassets */; };
+		AA0000000000000000000091 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = KK0000000000000000000001 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,20 +34,22 @@
 		BB0000000000000000000003 /* BakeIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeIngredient.swift; sourceTree = "<group>"; };
 		BB0000000000000000000004 /* BakeRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeRecipe.swift; sourceTree = "<group>"; };
 		BB0000000000000000000005 /* BakeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeStore.swift; sourceTree = "<group>"; };
-		BB0000000000000000000006 /* BakeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeSettings.swift; sourceTree = "<group>"; };
-		BB0000000000000000000007 /* BakeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeStrings.swift; sourceTree = "<group>"; };
-		BB0000000000000000000008 /* BakeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeNumbers.swift; sourceTree = "<group>"; };
-		BB0000000000000000000009 /* BakeInputRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeInputRow.swift; sourceTree = "<group>"; };
-		BB0000000000000000000010 /* BakeRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeRootView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000011 /* BakeMix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeMix.swift; sourceTree = "<group>"; };
-		BB0000000000000000000012 /* BakeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeCalculatorView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000013 /* BakeRecipeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeRecipeSheet.swift; sourceTree = "<group>"; };
-		BB0000000000000000000014 /* BakeTimingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeTimingSheet.swift; sourceTree = "<group>"; };
-		BB0000000000000000000015 /* BakeAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeAboutView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BB0000000000000000000022 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		BB0000000000000000000023 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		BB0000000000000000000030 /* BakeRatio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BakeRatio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB0000000000000000000006 /* BakeMix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeMix.swift; sourceTree = "<group>"; };
+		BB0000000000000000000007 /* BakePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakePreset.swift; sourceTree = "<group>"; };
+		BB0000000000000000000008 /* BakeRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeRootView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000009 /* BakeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeCalculatorView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000010 /* BakeInputRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeInputRow.swift; sourceTree = "<group>"; };
+		BB0000000000000000000011 /* BakeAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeAboutView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000012 /* BakeRecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeRecipeListView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000013 /* BakeScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeScheduleView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000014 /* BakeBakesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeBakesView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000015 /* BakeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeSettings.swift; sourceTree = "<group>"; };
+		BB0000000000000000000016 /* BakeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeStrings.swift; sourceTree = "<group>"; };
+		BB0000000000000000000017 /* BakeNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakeNumbers.swift; sourceTree = "<group>"; };
+		BB0000000000000000000090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB0000000000000000000092 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BB0000000000000000000093 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BB0000000000000000000099 /* BakeRatio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BakeRatio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +86,7 @@
 		DD0000000000000000000003 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000000000000000000030 /* BakeRatio.app */,
+				BB0000000000000000000099 /* BakeRatio.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,11 +94,12 @@
 		DD0000000000000000000004 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000000000000000000011 /* BakeMix.swift */,
 				BB0000000000000000000002 /* BakeFormula.swift */,
 				BB0000000000000000000003 /* BakeIngredient.swift */,
 				BB0000000000000000000004 /* BakeRecipe.swift */,
 				BB0000000000000000000005 /* BakeStore.swift */,
+				BB0000000000000000000006 /* BakeMix.swift */,
+				BB0000000000000000000007 /* BakePreset.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,12 +107,13 @@
 		DD0000000000000000000005 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000000000000000000009 /* BakeInputRow.swift */,
-				BB0000000000000000000010 /* BakeRootView.swift */,
-				BB0000000000000000000012 /* BakeCalculatorView.swift */,
-				BB0000000000000000000013 /* BakeRecipeSheet.swift */,
-				BB0000000000000000000014 /* BakeTimingSheet.swift */,
-				BB0000000000000000000015 /* BakeAboutView.swift */,
+				BB0000000000000000000008 /* BakeRootView.swift */,
+				BB0000000000000000000009 /* BakeCalculatorView.swift */,
+				BB0000000000000000000010 /* BakeInputRow.swift */,
+				BB0000000000000000000011 /* BakeAboutView.swift */,
+				BB0000000000000000000012 /* BakeRecipeListView.swift */,
+				BB0000000000000000000013 /* BakeScheduleView.swift */,
+				BB0000000000000000000014 /* BakeBakesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,9 +121,9 @@
 		DD0000000000000000000006 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000000000000000000006 /* BakeSettings.swift */,
-				BB0000000000000000000007 /* BakeStrings.swift */,
-				BB0000000000000000000008 /* BakeSettings.swift */,
+				BB0000000000000000000015 /* BakeSettings.swift */,
+				BB0000000000000000000016 /* BakeStrings.swift */,
+				BB0000000000000000000017 /* BakeNumbers.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -125,7 +131,7 @@
 		DD0000000000000000000007 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000000000000000000020 /* Assets.xcassets */,
+				BB0000000000000000000090 /* Assets.xcassets */,
 				KK0000000000000000000001 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -148,7 +154,7 @@
 			);
 			name = BakeRatio;
 			productName = BakeRatio;
-			productReference = BB0000000000000000000030 /* BakeRatio.app */;
+			productReference = BB0000000000000000000099 /* BakeRatio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -190,8 +196,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0000000000000000000020 /* Assets.xcassets in Resources */,
-				AA0000000000000000000021 /* Localizable.strings in Resources */,
+				AA0000000000000000000090 /* Assets.xcassets in Resources */,
+				AA0000000000000000000091 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,20 +209,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0000000000000000000001 /* BakeRatioApp.swift in Sources */,
-				AA0000000000000000000002 /* Scenario.swift in Sources */,
-				AA0000000000000000000003 /* LoanPlan.swift in Sources */,
-				AA0000000000000000000004 /* SimulationResult.swift in Sources */,
-				AA0000000000000000000005 /* Simulator.swift in Sources */,
-				AA0000000000000000000006 /* Money.swift in Sources */,
-				AA0000000000000000000007 /* L10n.swift in Sources */,
-				AA0000000000000000000008 /* Money.swift in Sources */,
-				AA0000000000000000000009 /* RootView.swift in Sources */,
-				AA0000000000000000000010 /* ResultView.swift in Sources */,
-				AA0000000000000000000011 /* ScenarioStore.swift in Sources */,
-				AA0000000000000000000012 /* PlanInputView.swift in Sources */,
-				AA0000000000000000000013 /* BalanceChartView.swift in Sources */,
-				AA0000000000000000000014 /* InfoView.swift in Sources */,
-				AA0000000000000000000015 /* CompareView.swift in Sources */,
+				AA0000000000000000000002 /* BakeFormula.swift in Sources */,
+				AA0000000000000000000003 /* BakeIngredient.swift in Sources */,
+				AA0000000000000000000004 /* BakeRecipe.swift in Sources */,
+				AA0000000000000000000005 /* BakeStore.swift in Sources */,
+				AA0000000000000000000006 /* BakeMix.swift in Sources */,
+				AA0000000000000000000007 /* BakePreset.swift in Sources */,
+				AA0000000000000000000008 /* BakeRootView.swift in Sources */,
+				AA0000000000000000000009 /* BakeCalculatorView.swift in Sources */,
+				AA0000000000000000000010 /* BakeInputRow.swift in Sources */,
+				AA0000000000000000000011 /* BakeAboutView.swift in Sources */,
+				AA0000000000000000000012 /* BakeRecipeListView.swift in Sources */,
+				AA0000000000000000000013 /* BakeScheduleView.swift in Sources */,
+				AA0000000000000000000014 /* BakeBakesView.swift in Sources */,
+				AA0000000000000000000015 /* BakeSettings.swift in Sources */,
+				AA0000000000000000000016 /* BakeStrings.swift in Sources */,
+				AA0000000000000000000017 /* BakeNumbers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +234,8 @@
 		KK0000000000000000000001 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BB0000000000000000000022 /* en */,
-				BB0000000000000000000023 /* zh-Hans */,
+				BB0000000000000000000092 /* en */,
+				BB0000000000000000000093 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -277,8 +285,8 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
+				"DEBUG=1",
+				"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -357,7 +365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = YWRVXKW66K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -366,10 +374,10 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
+				"$(inherited)",
+				"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ywrvxkw66k.bakeratio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -383,7 +391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = YWRVXKW66K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -392,10 +400,10 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
+				"$(inherited)",
+				"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ywrvxkw66k.bakeratio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -46,6 +46,20 @@ final class BakeStore: ObservableObject {
         persist()
     }
 
+    func update(bake: BakeLogEntry) {
+        if let i = bakes.firstIndex(where: { $0.id == bake.id }) {
+            bakes[i] = bake
+        } else {
+            bakes.append(bake)
+        }
+        persist()
+    }
+
+    func deleteBake(_ entry: BakeLogEntry) {
+        bakes.removeAll { $0.id == entry.id }
+        persist()
+    }
+
     func deleteBakes(at offsets: IndexSet) {
         remove(from: &bakes, offsets: offsets)
         persist()
