@@ -29,7 +29,7 @@ workflows:
       # 自动匹配会报 No matching profiles found）
       ios_signing:
         certificates:
-          - bakeratio_dist
+          - bakeratio_dist2
         provisioning_profiles:
           - bakeratio_profile
     scripts:
@@ -68,7 +68,7 @@ workflows:
       xcode: latest
       ios_signing:
         certificates:
-          - bakeratio_dist
+          - bakeratio_dist2
         provisioning_profiles:
           - bakeratio_adhoc
     scripts:
