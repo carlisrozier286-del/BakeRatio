@@ -130,7 +130,7 @@ enum BakeStrings {
     static let aboutDataTitle = "Your data"
     static let aboutData = "Recipes and bake records are stored in a single file inside the app's own storage. There is no export feature and no cloud sync."
     static let aboutSettings = "Settings"
-    static let aboutVersion = "Version 1.1"
+    static let aboutVersion = "Version 1.0"
 
     // MARK: 设置
     static let settings = "Settings"
