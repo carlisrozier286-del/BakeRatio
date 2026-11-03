@@ -19,23 +19,30 @@ workflows:
       - build/Build/Products/Release-iphoneos/*.app
 
   ios-build:
-    name: Apiary Log iOS Build (App Store)
+    name: Bake Ratio iOS Build (App Store)
     max_build_duration: 60
+    integrations:
+      app_store_connect: bakeratio
     environment:
       xcode: latest
-      groups:
-        - appstore_creds
+      # 点名使用 Codemagic 里已上传的证书 + 描述文件（不走自动匹配，
+      # 自动匹配会报 No matching profiles found）
       ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.example.bakeratio
+        certificates:
+          - bakeratio_dist
+        provisioning_profiles:
+          - bakeratio_profile
     scripts:
-      - name: Set up code signing
+      - name: Apply profiles to the project
         script: |
-          keychain initialize
-          app-store-connect fetch-signing-files "com.example.bakeratio" \
-            --type IOS_APP_STORE --create
-          keychain add-certificates
+          set -euo pipefail
+          # 写工程签名设置并生成 export_options.plist；缺这一步 build-ipa 会报文件不存在
           xcode-project use-profiles
+      - name: Show signing files in use
+        script: |
+          set -euo pipefail
+          security find-identity -v -p codesigning || true
+          ls -1 ~/Library/MobileDevice/Provisioning\ Profiles/ 2>/dev/null | wc -l
       - name: Set build number
         script: |
           agvtool new-version -all $BUILD_NUMBER
@@ -44,6 +51,45 @@ workflows:
           xcode-project build-ipa \
             --project "BakeRatio.xcodeproj" \
             --scheme "BakeRatio"
+    publishing:
+      app_store_connect:
+        auth: integration
+        # 只上传构建；外部测试 Beta 审核需要先填 Test Information，会让整个构建变红
+        submit_to_testflight: false
+    artifacts:
+      - build/ios/ipa/*.ipa
+
+  ios-build-adhoc:
+    name: Bake Ratio Ad Hoc (device install)
+    max_build_duration: 60
+    integrations:
+      app_store_connect: bakeratio
+    environment:
+      xcode: latest
+      ios_signing:
+        certificates:
+          - bakeratio_dist
+        provisioning_profiles:
+          - bakeratio_adhoc
+    scripts:
+      - name: Apply profiles to the project
+        script: |
+          set -euo pipefail
+          xcode-project use-profiles
+      - name: Set build number
+        script: |
+          agvtool new-version -all $BUILD_NUMBER
+      - name: Build Ad Hoc ipa
+        script: |
+          xcode-project build-ipa \
+            --project "BakeRatio.xcodeproj" \
+            --scheme "BakeRatio"
+      - name: Show ipa info
+        script: |
+          set -euo pipefail
+          IPA=$(find build/ios/ipa -maxdepth 1 -name "*.ipa" | head -1)
+          echo "ipa: $IPA"
+          ls -lh "$IPA"
     artifacts:
       - build/ios/ipa/*.ipa
 
@@ -66,20 +112,17 @@ workflows:
       - name: Capture
         script: |
           set -e
-          BUNDLE="com.example.bakeratio"
+          BUNDLE="com.ywrvxkw66k.bakeratio"
           APP=$(find build/Build/Products/Debug-iphonesimulator -maxdepth 1 -name "*.app" | head -1)
           mkdir -p capture
           UDID=$(xcrun simctl list devices available | grep -m1 "iPhone 17 Pro Max (" | grep -oE "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}")
           xcrun simctl boot "$UDID" || true
           xcrun simctl bootstatus "$UDID" -b
           xcrun simctl install "$UDID" "$APP"
-          SIMCTL_CHILD_RP_TAB=0 xcrun simctl launch "$UDID" "$BUNDLE"
-          sleep 3
-          xcrun simctl io "$UDID" screenshot "capture/hives.png"
-          SIMCTL_CHILD_RP_TAB=1 xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-          SIMCTL_CHILD_RP_TAB=1 xcrun simctl launch "$UDID" "$BUNDLE"
-          sleep 3
-          xcrun simctl io "$UDID" screenshot "capture/stats.png"
+          xcrun simctl launch "$UDID" "$BUNDLE"
+          sleep 4
+          xcrun simctl io "$UDID" screenshot "capture/01-calculator.png"
+          sips -g pixelWidth -g pixelHeight capture/01-calculator.png || true
           ls -la capture
     artifacts:
       - capture/*.png
