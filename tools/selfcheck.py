@@ -4,7 +4,7 @@ import pathlib
 import re
 import sys
 
-ROOT = pathlib.Path("/home/xykj211/BakeRatio")
+ROOT = pathlib.Path(__file__).resolve().parent.parent   # 工程根目录，跨平台
 NAME = "BakeRatio"
 SRC = ROOT / NAME
 PBX = ROOT / f"{NAME}.xcodeproj" / "project.pbxproj"
@@ -92,12 +92,18 @@ else:
 print("\n=== 6. 图标 ===")
 icon = SRC / "Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png"
 try:
-    from PIL import Image
-    im = Image.open(icon)
-    if im.size == (1024, 1024) and im.mode == "RGB":
+    # 直接读 PNG 头，不依赖 Pillow
+    head = icon.read_bytes()[:33]
+    if head[:8] != b"\x89PNG\r\n\x1a\n":
+        raise ValueError("不是 PNG")
+    width = int.from_bytes(head[16:20], "big")
+    height = int.from_bytes(head[20:24], "big")
+    color_type = head[25]
+    has_alpha = color_type == 6 or head[28] != 0
+    if (width, height) == (1024, 1024) and not has_alpha:
         good(f"1024x1024 无 alpha ({icon.stat().st_size // 1024}KB)")
     else:
-        fail(f"图标规格不对 {im.size} {im.mode}")
+        fail(f"图标规格不对 {width}x{height} colorType={color_type} alpha={has_alpha}")
 except Exception as e:
     fail(f"图标读取失败 {e}")
 
