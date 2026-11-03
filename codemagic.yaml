@@ -31,7 +31,7 @@ workflows:
         certificates:
           - bakeratio_dist2
         provisioning_profiles:
-          - bakeratio_profile
+          - bakeratio_profile2
     scripts:
       - name: Apply profiles to the project
         script: |
